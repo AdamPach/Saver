@@ -1,15 +1,15 @@
 package com.pachyc.saver.view;
 
 import com.pachyc.saver.files.CopySave;
+import com.pachyc.saver.files.FileManager;
 
 import javax.swing.*;
-import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
-import java.io.IOException;
 
-public class CreatePreset extends  JDialog{
+
+public class CreatePreset extends JDialog{
     private JButton createBut;
     private JButton cancleButton;
     private JTextField fromTextField;
@@ -23,6 +23,7 @@ public class CreatePreset extends  JDialog{
     private JPanel buttonPanel;
     private JPanel toPanel;
     private JTextField textField1;
+    private FileManager fileManager;
 
     public CreatePreset(JFrame parent, boolean modal){
         super(parent, modal);
@@ -30,6 +31,7 @@ public class CreatePreset extends  JDialog{
         this.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
         this.setContentPane(this.mainPanel);
         this.pack();
+        this.fileManager = new FileManager();
 
         createBut.addActionListener(new ActionListener() {
             @Override
@@ -58,11 +60,12 @@ public class CreatePreset extends  JDialog{
                     this.fromTextField.getText(),
                     this.toTextField.getText()
             );
-
+            fileManager.createPreset(copySave, this);
         }
         catch (IllegalArgumentException exception){
             JOptionPane.showMessageDialog(this,"Error: " + exception.getMessage());
         }
+        this.dispose();
     }
 
     protected void findFromFolder(ActionEvent e){
@@ -74,7 +77,7 @@ public class CreatePreset extends  JDialog{
             this.fromTextField.setText(file.getPath());
         }
         catch (Exception exception){
-
+            this.fromTextField.setText(this.fromTextField.getText());
         }
     }
 
@@ -87,7 +90,7 @@ public class CreatePreset extends  JDialog{
             this.toTextField.setText(file.getPath());
         }
         catch (Exception exception){
-
+            this.toTextField.setText("");
         }
     }
 }

@@ -16,17 +16,18 @@ public class FileManager {
     private CopySave copySave;
 
     public FileManager(){
-        this.path = Paths.get("scr\\com\\pachyc\\saver\\files\\save");
+        this.path = Paths.get("src\\com\\pachyc\\saver\\files\\save\\save.txt");
     }
 
-    public void createPreset(CopySave copySave){
+    public void createPreset(CopySave copySave, JDialog dialog){
         try(BufferedWriter writer = new BufferedWriter(new FileWriter(this.path.toString(), true))){
-            String[] newSave= this.copySave.getSave();
+            String[] newSave= copySave.getSave();
             writer.write(String.join(";", newSave));
+            writer.newLine();
             writer.flush();
         }
         catch (IOException e){
-            JOptionPane.showMessageDialog(null,"Nový preset se nepovedlo vytvorit");
+            JOptionPane.showMessageDialog(dialog,"Error: " + e.getMessage());
         }
     }
 }
