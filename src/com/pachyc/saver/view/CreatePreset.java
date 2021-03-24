@@ -1,6 +1,10 @@
 package com.pachyc.saver.view;
 
+import com.pachyc.saver.files.CopySave;
+
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class CreatePreset extends  JDialog{
     private JButton createBut;
@@ -15,6 +19,7 @@ public class CreatePreset extends  JDialog{
     private JPanel fromPanel;
     private JPanel buttonPanel;
     private JPanel toPanel;
+    private JTextField textField1;
 
     public CreatePreset(JFrame parent, boolean modal){
         super(parent, modal);
@@ -23,5 +28,25 @@ public class CreatePreset extends  JDialog{
         this.setContentPane(this.mainPanel);
         this.pack();
 
+        createBut.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                createPres(e);
+            }
+        });
+    }
+
+    private void createPres(ActionEvent e){
+        try{
+            CopySave copySave = new CopySave(
+                    this.textField1.getText(),
+                    this.fromTextField.getText(),
+                    this.toTextField.getText()
+            );
+
+        }
+        catch (IllegalArgumentException exception){
+            JOptionPane.showMessageDialog(this,"Error: " + exception.getMessage());
+        }
     }
 }
