@@ -7,6 +7,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.io.IOException;
 
 public class CreatePreset extends  JDialog{
     private JButton createBut;
@@ -65,18 +66,28 @@ public class CreatePreset extends  JDialog{
     }
 
     protected void findFromFolder(ActionEvent e){
-        JFileChooser fileChooser= new JFileChooser();
-        fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-        fileChooser.showOpenDialog(this);
-        File file = fileChooser.getSelectedFile();
-        this.fromTextField.setText(file.getPath());
+        try {
+            JFileChooser fileChooser = new JFileChooser();
+            fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+            fileChooser.showOpenDialog(this);
+            File file = fileChooser.getSelectedFile();
+            this.fromTextField.setText(file.getPath());
+        }
+        catch (Exception exception){
+
+        }
     }
 
     protected void findToFolder(ActionEvent e){
-        JFileChooser fileChooser= new JFileChooser();
-        fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-        fileChooser.showOpenDialog(this);
-        File file = fileChooser.getSelectedFile();
-        this.toTextField.setText(file.getPath());
+        try {
+            JFileChooser fileChooser = new JFileChooser();
+            fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+            fileChooser.showOpenDialog(this);
+            File file = fileChooser.getSelectedFile();
+            this.toTextField.setText(file.getPath());
+        }
+        catch (Exception exception){
+
+        }
     }
 }
