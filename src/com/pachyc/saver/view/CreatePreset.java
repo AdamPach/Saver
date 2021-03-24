@@ -3,8 +3,10 @@ package com.pachyc.saver.view;
 import com.pachyc.saver.files.CopySave;
 
 import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 
 public class CreatePreset extends  JDialog{
     private JButton createBut;
@@ -34,6 +36,18 @@ public class CreatePreset extends  JDialog{
                 createPres(e);
             }
         });
+        findFromBut.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                findFromFolder(e);
+            }
+        });
+        findToBut.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                findToFolder(e);
+            }
+        });
     }
 
     private void createPres(ActionEvent e){
@@ -48,5 +62,21 @@ public class CreatePreset extends  JDialog{
         catch (IllegalArgumentException exception){
             JOptionPane.showMessageDialog(this,"Error: " + exception.getMessage());
         }
+    }
+
+    protected void findFromFolder(ActionEvent e){
+        JFileChooser fileChooser= new JFileChooser();
+        fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+        fileChooser.showOpenDialog(this);
+        File file = fileChooser.getSelectedFile();
+        this.fromTextField.setText(file.getPath());
+    }
+
+    protected void findToFolder(ActionEvent e){
+        JFileChooser fileChooser= new JFileChooser();
+        fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+        fileChooser.showOpenDialog(this);
+        File file = fileChooser.getSelectedFile();
+        this.toTextField.setText(file.getPath());
     }
 }
