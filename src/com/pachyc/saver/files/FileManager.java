@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.io.*;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 
 
 public class FileManager {
@@ -24,6 +25,19 @@ public class FileManager {
         }
         catch (IOException e){
             JOptionPane.showMessageDialog(dialog,"Error: " + e.getMessage());
+        }
+    }
+
+    public void deletePreset(ArrayList<CopySave> saves){
+        try(BufferedWriter writer = new BufferedWriter(new FileWriter(this.path.toString()))){
+            for (CopySave save : saves){
+                writer.write(save.getFormatedSave());
+                writer.newLine();
+                writer.flush();
+            }
+        }
+        catch (IOException e){
+            JOptionPane.showMessageDialog(null, "Nepovedlo se smazat preset!");
         }
     }
 

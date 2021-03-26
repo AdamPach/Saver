@@ -33,6 +33,13 @@ public class CopySave {
         return this.title;
     }
 
+    public String getFormatedSave(){
+        String save;
+        String[] saveThings = getSave();
+        save = String.join(";", saveThings);
+        return save;
+    }
+
     public String[] getSave(){
         String[] save = new String[3];
         save[0] = this.title;
