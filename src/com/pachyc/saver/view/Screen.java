@@ -17,6 +17,7 @@ public class Screen extends JFrame {
     private JButton deletePreset;
     private JButton copy;
     private JLabel showCofig;
+    private CopySave chosenCopySave;
 
     public Screen(){
         super("Saver");
@@ -63,8 +64,9 @@ public class Screen extends JFrame {
         try {
             ChosePreset chosePreset = new ChosePreset(this, true);
             chosePreset.setVisible(true);
-            CopySave chosenPreset = chosePreset.getSetPreset();
-            this.showCofig.setText("Your preset: " + chosenPreset);
+            this.chosenCopySave = chosePreset.getSetPreset();
+            this.showCofig.setText("Your preset: " + this.chosenCopySave);
+            this.copy.setEnabled(true);
             chosePreset = null;
         }
         catch (IllegalArgumentException exception){
