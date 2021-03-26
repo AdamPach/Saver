@@ -74,7 +74,7 @@ public class CreatePreset extends JDialog{
         this.dispose();
     }
 
-    protected void findFromFolder(ActionEvent e){
+    private void findFromFolder(ActionEvent e){
         try {
             JFileChooser fileChooser = new JFileChooser();
             fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
@@ -88,7 +88,7 @@ public class CreatePreset extends JDialog{
         }
     }
 
-    protected void findToFolder(ActionEvent e){
+    private void findToFolder(ActionEvent e){
         try {
             JFileChooser fileChooser = new JFileChooser();
             fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
