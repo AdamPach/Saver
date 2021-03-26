@@ -60,10 +60,15 @@ public class Screen extends JFrame {
     }
 
     private void chosePre(ActionEvent e){
-        ChosePreset chosePreset = new ChosePreset(this, true);
-        chosePreset.setVisible(true);
-        CopySave chosenPreset = chosePreset.getSetPreset();
-        this.showCofig.setText("Your preset: " + chosenPreset);
-        chosePreset = null;
+        try {
+            ChosePreset chosePreset = new ChosePreset(this, true);
+            chosePreset.setVisible(true);
+            CopySave chosenPreset = chosePreset.getSetPreset();
+            this.showCofig.setText("Your preset: " + chosenPreset);
+            chosePreset = null;
+        }
+        catch (IllegalArgumentException exception){
+            JOptionPane.showMessageDialog(this, "Error: " + exception.getMessage());
+        }
     }
 }
