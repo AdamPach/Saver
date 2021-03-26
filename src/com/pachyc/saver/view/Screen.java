@@ -1,5 +1,7 @@
 package com.pachyc.saver.view;
 
+import com.pachyc.saver.files.CopySave;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -37,6 +39,12 @@ public class Screen extends JFrame {
                 delPre(e);
             }
         });
+        chosePreset.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                chosePre(e);
+            }
+        });
     }
 
     private void createPre(ActionEvent e){
@@ -49,5 +57,13 @@ public class Screen extends JFrame {
         DeletePreset deletePreset = new DeletePreset(this, true);
         deletePreset.setVisible(true);
         deletePreset = null;
+    }
+
+    private void chosePre(ActionEvent e){
+        ChosePreset chosePreset = new ChosePreset(this, true);
+        chosePreset.setVisible(true);
+        CopySave chosenPreset = chosePreset.getSetPreset();
+        this.showCofig.setText("Your preset: " + chosenPreset);
+        chosePreset = null;
     }
 }
