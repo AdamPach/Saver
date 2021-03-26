@@ -28,6 +28,11 @@ public class CopySave {
         this.to = testTo;
     }
 
+    @Override
+    public String toString() {
+        return this.title;
+    }
+
     public String[] getSave(){
         String[] save = new String[3];
         save[0] = this.title;
