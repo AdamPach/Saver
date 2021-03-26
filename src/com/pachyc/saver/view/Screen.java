@@ -42,10 +42,12 @@ public class Screen extends JFrame {
     private void createPre(ActionEvent e){
         CreatePreset createPreset = new CreatePreset(this, true);
         createPreset.setVisible(true);
+        createPreset = null;
     }
 
     private void delPre(ActionEvent e){
         DeletePreset deletePreset = new DeletePreset(this, true);
         deletePreset.setVisible(true);
+        deletePreset = null;
     }
 }

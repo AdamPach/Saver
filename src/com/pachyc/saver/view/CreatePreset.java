@@ -51,6 +51,12 @@ public class CreatePreset extends JDialog{
                 findToFolder(e);
             }
         });
+        cancleButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                closeDialog(e);
+            }
+        });
     }
 
     private void createPres(ActionEvent e){
@@ -75,6 +81,7 @@ public class CreatePreset extends JDialog{
             fileChooser.showOpenDialog(this);
             File file = fileChooser.getSelectedFile();
             this.fromTextField.setText(file.getPath());
+            fileChooser = null;
         }
         catch (Exception exception){
             this.fromTextField.setText(this.fromTextField.getText());
@@ -88,9 +95,14 @@ public class CreatePreset extends JDialog{
             fileChooser.showOpenDialog(this);
             File file = fileChooser.getSelectedFile();
             this.toTextField.setText(file.getPath());
+            fileChooser = null;
         }
         catch (Exception exception){
             this.toTextField.setText("");
         }
+    }
+
+    private void closeDialog(ActionEvent e){
+        dispose();
     }
 }
