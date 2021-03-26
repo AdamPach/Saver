@@ -1,6 +1,7 @@
 package com.pachyc.saver.view;
 
 import com.pachyc.saver.files.CopySave;
+import com.pachyc.saver.files.copy.CopyManager;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -18,6 +19,7 @@ public class Screen extends JFrame {
     private JButton copy;
     private JLabel showCofig;
     private CopySave chosenCopySave;
+    private CopyManager copyManager;
 
     public Screen(){
         super("Saver");
@@ -46,6 +48,12 @@ public class Screen extends JFrame {
                 chosePre(e);
             }
         });
+        copy.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                copyEvent(e);
+            }
+        });
     }
 
     private void createPre(ActionEvent e){
@@ -67,10 +75,20 @@ public class Screen extends JFrame {
             this.chosenCopySave = chosePreset.getSetPreset();
             this.showCofig.setText("Your preset: " + this.chosenCopySave);
             this.copy.setEnabled(true);
+            this.copyManager = new CopyManager(this.chosenCopySave);
             chosePreset = null;
         }
         catch (IllegalArgumentException exception){
             JOptionPane.showMessageDialog(this, "Error: " + exception.getMessage());
         }
+    }
+
+    private void copyEvent(ActionEvent e){
+        this.createPreset.setEnabled(false);
+        this.chosePreset.setEnabled(false);
+        this.copy.setEnabled(false);
+        this.deletePreset.setEnabled(false);
+        copyManager.startCopy();
+        dispose();
     }
 }

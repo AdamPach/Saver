@@ -47,4 +47,16 @@ public class CopySave {
         save[2] = this.to.getPath().toString();
         return save;
     }
+
+    public File getTo() {
+        return to;
+    }
+
+    public void setTo(File to) {
+        this.to = to;
+    }
+
+    public File getFrom() {
+        return from;
+    }
 }

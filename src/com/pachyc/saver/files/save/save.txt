@@ -1,2 +1,3 @@
 Test;C:\Users\Adam\Documents\CyberLink;C:\Users\Adam\Documents\Assassin's Creed Origins
 Minecraft;C:\Users\Adam\Documents\CyberLink;C:\Users\Adam\Documents\EAGLE
+FunctionTest;C:\Users\Adam\Desktop\Test2\Fitness;C:\Users\Adam\Desktop\Test3
