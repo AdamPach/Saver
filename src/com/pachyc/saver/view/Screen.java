@@ -31,10 +31,21 @@ public class Screen extends JFrame {
                 createPre(e);
             }
         });
+        deletePreset.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                delPre(e);
+            }
+        });
     }
 
     private void createPre(ActionEvent e){
         CreatePreset createPreset = new CreatePreset(this, true);
         createPreset.setVisible(true);
+    }
+
+    private void delPre(ActionEvent e){
+        DeletePreset deletePreset = new DeletePreset(this, true);
+        deletePreset.setVisible(true);
     }
 }
