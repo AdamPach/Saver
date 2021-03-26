@@ -1,10 +1,7 @@
 package com.pachyc.saver.files;
 
 import javax.swing.*;
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
@@ -12,7 +9,6 @@ import java.nio.file.Paths;
 public class FileManager {
 
     private Path path;
-    private BufferedReader reader;
     private CopySave copySave;
 
     public FileManager(){
@@ -29,5 +25,21 @@ public class FileManager {
         catch (IOException e){
             JOptionPane.showMessageDialog(dialog,"Error: " + e.getMessage());
         }
+    }
+
+    public DefaultListModel<CopySave> readFile(){
+        DefaultListModel<CopySave> newModel= new DefaultListModel<>();
+        try(BufferedReader reader = new BufferedReader(new BufferedReader(new FileReader(this.path.toString())))){
+            String line;
+            while ((line = reader.readLine()) != null){
+                String[] cs = line.split(";");
+                CopySave newCopySave = new CopySave(cs[0],cs[1],cs[2]);
+                newModel.addElement(newCopySave);
+            }
+        }
+        catch (IOException e){
+            JOptionPane.showMessageDialog(null, "Nepovadlo se nacist soubor");
+        }
+        return newModel;
     }
 }

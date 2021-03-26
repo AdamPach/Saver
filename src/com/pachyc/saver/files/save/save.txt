@@ -1,3 +1,4 @@
 Test;C:\Users\Adam\Documents\CyberLink;C:\Users\Adam\Documents\Assassin's Creed Origins
 Test;C:\Users\Adam\Documents\Assassin's Creed Origins;C:\Users\Adam\Documents\Downloads
 Test2;C:\Users\Adam\Documents\Assassin's Creed Unity;C:\Users\Adam\Documents\Downloads
+Deges;C:\Users\Adam\Documents\Assassin's Creed Syndicate;C:\Users\Adam\Documents\Blackmagic Design
