@@ -2,6 +2,7 @@ package com.pachyc.saver.files;
 
 import javax.swing.*;
 import java.io.*;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -13,7 +14,8 @@ public class FileManager {
     private CopySave copySave;
 
     public FileManager(){
-        this.path = Paths.get("src\\com\\pachyc\\saver\\files\\save\\save.txt");
+        this.path = Paths.get("src"+ File.separator+ "com" + File.separator + "pachyc" + File.separator
+                +"saver" + File.separator +"files" + File.separator +"save" + File.separator +"save.txt");
     }
 
     public void createPreset(CopySave copySave, JDialog dialog){
